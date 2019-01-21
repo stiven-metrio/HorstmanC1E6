@@ -6,6 +6,7 @@
  */
 package java_ex6_factorialbiginteger;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -19,12 +20,15 @@ public class Java_Ex6_FactorialBigInteger {
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int nValue = scan.nextInt(), nFactorial=1;
-        for (int i=1; i<=nValue; i++){
-            if(i<nValue)System.out.printf("%dx",i);else System.out.printf("%d",i);
-            nFactorial *= i;
-        }
-        System.out.printf(" = %d%n",nFactorial);
+        System.out.print("Calculate factorial of: ");
+        String value = scan.next();
+        System.out.printf("Factorial of %s is: ",value);
+        System.out.println(factorial(new BigInteger(value)));
+    }
+    
+    public static BigInteger factorial(BigInteger number){
+        if(number.equals(BigInteger.ZERO))return BigInteger.ONE;
+        else return number.multiply(factorial(number.subtract(BigInteger.ONE)));
     }
     
 }
